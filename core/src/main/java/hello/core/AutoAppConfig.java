@@ -11,3 +11,4 @@ import org.springframework.context.annotation.FilterType;
 public class AutoAppConfig {
 
 }
+
