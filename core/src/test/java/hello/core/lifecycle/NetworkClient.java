@@ -26,17 +26,14 @@ public class NetworkClient{
         System.out.println("close:  = " + url);
     }
 
-    //의존 관계 주입이 끝나고
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("NetworkClient.afterPropertiesSet");
+    public void init(){
+        System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메시지");
     }
 
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("NetworkClient.destroy");
+    public void close(){
+        System.out.println("NetworkClient.close");
         disconnect();
     }
 }
