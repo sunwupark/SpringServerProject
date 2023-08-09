@@ -8,6 +8,7 @@ import java.util.Date;
 @Entity
 public class Member {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     @Column(name = "name", nullable = false)
     private String username;
