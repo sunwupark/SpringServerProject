@@ -26,11 +26,11 @@ public class JpaMain {
 
             Member member = new Member();
             member.setUsername("member1");
-            member.setTeam(team);
+            member.changeTeam(team);
             em.persist(member);
 
-            em.flush();
-            em.clear();
+//            em.flush();
+//            em.clear();
 
 //            Team findTeam = em.find(Team.class, team.getId());
 //            int memberSize = findTeam.getMembers().size();
