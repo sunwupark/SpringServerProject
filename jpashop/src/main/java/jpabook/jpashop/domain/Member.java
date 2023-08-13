@@ -1,7 +1,6 @@
 package jpabook.jpashop.domain;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class Member extends  BaseEntity{
     private String name;
 
     @Embedded
-    private Period worPeriod;
+    private Period workPeriod;
     @Embedded
     private Address homeAddress;
 
@@ -29,16 +28,18 @@ public class Member extends  BaseEntity{
             @AttributeOverride(name = "zipcode",
             column = @Column(name = "WORK_ZIPCODE"))
     })
+    private Address workAddress;
+
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
-    public Period getWorPeriod() {
-        return worPeriod;
+    public Period getWorkPeriod() {
+        return workPeriod;
     }
 
-    public void setWorPeriod(Period worPeriod) {
-        this.worPeriod = worPeriod;
+    public void setWorkPeriod(Period worPeriod) {
+        this.workPeriod = worPeriod;
     }
 
     public Address getHomeAddress() {
