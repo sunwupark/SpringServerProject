@@ -16,16 +16,12 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Child child1 = new Child();
-            Child child2 = new Child();
+            Member member = new Member();
+            member.setName("hello");
+            member.setHomeAddress(new Address("city", "street", "zipcode"));
+            member.setWorPeriod((new Period()));
 
-            Parent parent = new Parent();
-            parent.addChild(child1);
-            parent.addChild(child2);
-
-            em.persist(parent);
-//            em.persist(child1);
-//            em.persist(child2);
+            em.persist(member);
 
             tx.commit();
         } catch (Exception e){

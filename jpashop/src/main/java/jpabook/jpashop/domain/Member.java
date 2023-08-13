@@ -11,13 +11,43 @@ public class Member extends  BaseEntity{
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "MEMBER_ID")
     private Long id;
+
+    @Column(name = "USERNAME")
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
+
+    @Embedded
+    private Period worPeriod;
+    @Embedded
+    private Address homeAddress;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "city",
+            column = @Column(name = "WORK_CITY")),
+            @AttributeOverride(name = "street",
+            column = @Column(name = "WORK_STREET")),
+            @AttributeOverride(name = "zipcode",
+            column = @Column(name = "WORK_ZIPCODE"))
+    })
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
+
+    public Period getWorPeriod() {
+        return worPeriod;
+    }
+
+    public void setWorPeriod(Period worPeriod) {
+        this.worPeriod = worPeriod;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
 
     public List<Order> getOrders() {
         return orders;
@@ -41,29 +71,5 @@ public class Member extends  BaseEntity{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
     }
 }
