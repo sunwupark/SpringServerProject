@@ -11,17 +11,17 @@ import java.util.List;
 public class Team {
 
     @Id @GeneratedValue
-    private String id;
+    private Long id;
     private String name;
 
     @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
