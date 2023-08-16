@@ -5,13 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Jpashop2Application {
-
-    Hello hello = new Hello();
-    hello.setData("dfdf");
-    String data = hello.getData();
-
     public static void main(String[] args) {
         SpringApplication.run(Jpashop2Application.class, args);
+        Hello hello = new Hello();
+        hello.setData("1L");
+        String data = hello.getData();
+        System.out.println("data = " + data);
     }
 
 }
