@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b8ebc0b-a0b8-461b-80b7-208630df88d7" name="Changes" comment="delete">
-      <change beforePath="$PROJECT_DIR$/NMW/src/main/java/NoMetroWaiting/NMW/NmwApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/NMW/src/main/java/NoMetroWaiting/NmwApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NMW/src/main/java/NoMetroWaiting/NMW/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/NMW/src/main/java/NoMetroWaiting/domain/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NMW/src/main/java/NoMetroWaiting/NMW/domain/Share.java" beforeDir="false" afterPath="$PROJECT_DIR$/NMW/src/main/java/NoMetroWaiting/domain/Share.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NMW/src/main/java/NoMetroWaiting/NMW/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/NMW/src/main/java/NoMetroWaiting/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NMW/src/main/java/NoMetroWaiting/NMW/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/NMW/src/main/java/NoMetroWaiting/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +16,19 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectId" id="2U5uoqyh696xhCu3wwIIwfRf9B1" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/mac/Desktop/SpringServerProject/NMW/NMW/src/main/java/NoMetroWaiting/NMW",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -56,6 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1692241940659</updated>
       <workItem from="1692241941889" duration="2809000" />
+      <workItem from="1693202925375" duration="845000" />
     </task>
     <task id="LOCAL-00001" summary="delete">
       <option name="closed" value="true" />
