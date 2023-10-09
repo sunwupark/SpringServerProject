@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+//likethis
 @Entity
 @Getter @Setter
 public class Member {
