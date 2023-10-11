@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>미션 UMC</h1>
+<div class="col-md-12">
+    <!-- 로그인 기능 영역 -->
+    <a type="button" class="btn btn-primary" href="/posts">글 등록</a>
+    <div th:unless="${userName}">
+        <!--
+            - 네이버 로그인 URL은 appication-oauth.yml에 등록한 redirect-uri 값에 맞춰 자동으로 등록된다.
+            - /oauth2/authorization/ 까지는 고정이고 마지막 Path만 각 소셜 로그인 코드를 사용하면 된다.
+            - 여기서는 naver가 마지막 Path가 된다.
+        -->
+        <a th:href="@{/oauth2/authorization/google}" class="btn btn-success active" role="button">Google Login</a>
+    </div>
+    <div th:if="${userName}">
+        Logged in as : <span id="user" th:text="${userName}"></span>
+        <a th:href="@{/logout}" class="btn btn-info active" role="button">Logout</a>
+    </div>
+    <br/>
+    <br/>
+</div>
+
+<br>
+<!--목록 출력 영역-->
+<table class="table table-horizontal table-bordered">
+<ul>
+    <li>
+        <ul>
+            <li><a href="/posts">Users</a></li>
+        </ul>
+        <ul>
+            <li><a href="/mission">Mission</a></li>
+        </ul>
+
+    </li>
+</ul>
+</body>
+</html>

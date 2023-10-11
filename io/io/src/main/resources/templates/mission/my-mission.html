@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mission List</title>
+</head>
+<body>
+<h1>Mission List</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Content</th>
+        <th>Point</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- User 목록을 반복하며 출력 -->
+    <tr th:each="mis : ${mission}">
+        <td th:text="${mis.id}"></td>
+        <td th:text="${mis.content}"></td>
+        <td th:text="${mis.point}"></td>
+        <td> <a th:href="'/mission/' + ${mis.id}">수정</a> </td>
+        <td>
+            <form id="deleteMember" th:action="@{'/mission/' + ${mis.id}}" method="post">
+                <input type="hidden" name="_method" value="delete"/>
+                <button id="delete-btn">삭제</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<button> <a href="/mission/registration">미션 등록</a> </button>
+<button> <a href="/">홈으로</a> </button>
+</body>
+</html>
