@@ -36,8 +36,13 @@ public class MissionUserListService {
 
     @Transactional
     public List<MissionUserList> getMissionUserListById(Long Id){
-        List<MissionUserList> missionUserRepositoryAll = missionUserRepository.findByUserId(Id);
+        List<MissionUserList> missionUserRepositoryAll = missionUserRepository.findByUser_mission(Id);
         return missionUserRepositoryAll;
+    }
+
+    @Transactional
+    public void deleteMissionUserList(Long Id){
+        missionUserRepository.deleteById(Id);
     }
 
 }

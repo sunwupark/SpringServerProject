@@ -28,8 +28,12 @@ public class Mission {
     private MissionStatus status=MissionStatus.ACTIVE;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mission_user", cascade = CascadeType.ALL)
     private List<MissionUserList> missionUserLists = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "mission_reviews", cascade = CascadeType.ALL)
+    private List<MissionReview> missionReviews = new ArrayList<>();
 
     private int point;
     @Builder

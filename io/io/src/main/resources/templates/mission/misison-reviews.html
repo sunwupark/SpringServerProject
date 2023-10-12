@@ -2,27 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>My Mission List</title>
+    <title>MissionReview List</title>
 </head>
 <body>
-<h1>My Mission List</h1>
+<h1>Mission List</h1>
 
 <table>
     <thead>
     <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Content</th>
+        <th>Body</th>
+        <th>Rating</th>
     </tr>
     </thead>
     <tbody>
     <!-- User 목록을 반복하며 출력 -->
-    <tr th:each="mis : ${missionList}">
+    <tr th:each="mis : ${missionreviews}">
         <td th:text="${mis.id}"></td>
-        <td th:text="${mis.user_mission.getName()}"></td>
-        <td th:text="${mis.mission_user.getContent()}"></td>
+        <td th:text="${mis.body}"></td>
+        <td th:text="${mis.rating}"></td>
         <td>
-            <form id="deleteMember" th:action="@{'/missionuser/' + ${mis.id}}" method="post">
+            <form id="deleteMember" th:action="@{'/missionReviews/' + ${mis.id}}" method="post">
                 <input type="hidden" name="_method" value="delete"/>
                 <button id="delete-btn">삭제</button>
             </form>
@@ -30,7 +30,7 @@
     </tr>
     </tbody>
 </table>
-<button> <a href="/missionuser/registration">미션 등록</a> </button>
+<button> <a href="/missionReviews/registration">미션 등록</a> </button>
 <button> <a href="/">홈으로</a> </button>
 </body>
 </html>

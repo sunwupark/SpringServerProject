@@ -16,11 +16,11 @@ public class MissionUserList {
 
     @ManyToOne
     @JoinColumn(name = "MISSION_ID")
-    private Mission mission;
+    private Mission mission_user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
-    private Users user;
+    private Users user_mission;
 
     @CreatedDate
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -37,8 +37,8 @@ public class MissionUserList {
 
     public static MissionUserList createOrder(Users user, Mission mission) {
         MissionUserList missionUserList = new MissionUserList();
-        missionUserList.setUser(user);
-        missionUserList.setMission(mission);
+        missionUserList.setUser_mission(user);
+        missionUserList.setMission_user(mission);
 
         return missionUserList;
     }

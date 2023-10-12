@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mvp.io.domain.Mission.MissionReview;
 import mvp.io.domain.Mission.MissionUserList;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -56,8 +57,12 @@ public class Users {
     private LocalDateTime updated_at;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user_mission")
     private List<MissionUserList> orders = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user_reviews")
+    private List<MissionReview> reviews = new ArrayList<>();
 
     @Builder
     public Users(String name, int point, LocalDateTime birthdate, String address, String password, String email, String login_type, String picture, Role role) {
