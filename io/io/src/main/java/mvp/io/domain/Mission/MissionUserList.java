@@ -22,7 +22,6 @@ public class MissionUserList {
     @JoinColumn(name = "USER_ID")
     private Users user;
 
-
     @CreatedDate
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime created_at;
@@ -31,6 +30,11 @@ public class MissionUserList {
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime updated_at;
 
+    @PrePersist
+    public void prePersist() {
+        created_at = LocalDateTime.now();
+    }
+
     public static MissionUserList createOrder(Users user, Mission mission) {
         MissionUserList missionUserList = new MissionUserList();
         missionUserList.setUser(user);
@@ -38,4 +42,14 @@ public class MissionUserList {
 
         return missionUserList;
     }
+
+    @Override
+    public String toString() {
+        return "MissionUserList{" +
+                "id=" + id +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                '}';
+    }
+
 }

@@ -42,6 +42,12 @@ public class UserService {
         return user;
     }
 
+    public Users findByEmail(String  email){
+        Users user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException(("해당 게시글이 없습니다. email=" + email)));
+        return user;
+    }
+
     public List<Users> getAllUsers() {
         return userRepository.findAll();
     }

@@ -47,7 +47,7 @@ public class IndexController {
     public String postsGet(Model model){
         List<Users> userList = userService.getAllUsers(); // UserService에서 모든 User 목록을 가져오는 메서드 구현 필요
         model.addAttribute("users", userList);
-        return "user-list";
+        return "user/user-list";
     }
 
     @GetMapping("/posts/{id}")
@@ -55,13 +55,13 @@ public class IndexController {
         Users user = userService.findById(id);
         System.out.println("user.getName() = " + user.getPoint());
         model.addAttribute("users", user);
-        return "user-update";
+        return "user/user-update";
     }
 
     @GetMapping("/posts/registration")
     public String postsSaveForm(Model model) {
         Users user = new Users(); // 빈 User 객체를 생성하거나 필요에 따라 초기화
         model.addAttribute("users", user); // 모델에 "users" 객체를 추가
-        return "user-form"; // Thymeleaf 템플릿 이름 반환
+        return "user/user-form"; // Thymeleaf 템플릿 이름 반환
     }
 }

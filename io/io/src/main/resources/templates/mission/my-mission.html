@@ -21,6 +21,12 @@
         <td th:text="${mis.id}"></td>
         <td th:text="${mis.content}"></td>
         <td th:text="${mis.point}"></td>
+        <td>
+            <form id="postMission" th:action="@{'/missionuser/registration/' + ${mis.id}}" method="post">
+                <input type="hidden" name="_method" value="post"/>
+                <button id="post-btn">내가 할게 미션</button>
+            </form>
+        </td>
         <td> <a th:href="'/mission/' + ${mis.id}">수정</a> </td>
         <td>
             <form id="deleteMember" th:action="@{'/mission/' + ${mis.id}}" method="post">

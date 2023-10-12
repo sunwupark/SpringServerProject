@@ -35,7 +35,7 @@ public class MissionUserListService {
     }
 
     @Transactional
-    public List<MissionUserList> getMissionUserListByEmail(Long Id){
+    public List<MissionUserList> getMissionUserListById(Long Id){
         List<MissionUserList> missionUserRepositoryAll = missionUserRepository.findByUserId(Id);
         return missionUserRepositoryAll;
     }
