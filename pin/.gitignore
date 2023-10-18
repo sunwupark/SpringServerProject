@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### secret File ###
+!**/src/main/resources/application-oauth.properties
+pin/src/main/resources/application-oauth.properties
