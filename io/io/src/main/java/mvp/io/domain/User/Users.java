@@ -26,7 +26,6 @@ public class Users {
     private Long id;
 
     private String name;
-    private String password;
     private String email;
 
     private String picture;
@@ -65,12 +64,11 @@ public class Users {
     private List<MissionReview> reviews = new ArrayList<>();
 
     @Builder
-    public Users(String name, int point, LocalDateTime birthdate, String address, String password, String email, String login_type, String picture, Role role) {
+    public Users(String name, int point, LocalDateTime birthdate, String address, String email, String login_type, String picture, Role role) {
         this.name = name;
         this.point = point;
         this.birthdate = birthdate;
         this.address = address;
-        this.password = password;
         this.email = email;
         this.login_type = login_type;
         this.picture = picture;

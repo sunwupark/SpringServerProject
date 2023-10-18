@@ -22,6 +22,7 @@ public class SpringSecurityConfig {
             "/image/**",
             "/js/**",
             "/h2-console/**",
+            "/api/authenticate"
     };
     // 인증 필요 리스트
     private static final String[] VERIFICATION_AUTH_LIST = {
