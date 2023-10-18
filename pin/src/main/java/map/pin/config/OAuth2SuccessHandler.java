@@ -42,10 +42,15 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         System.out.println("request = " + request.getHeaderNames());
 
         String email = oAuth2User.getAttribute("email");
+        String accessToken = oAuth2User.getAttribute("accessToken");
+        System.out.println("accessToken = " + accessToken);
+
         // 서비스 제공 플랫폼(GOOGLE, KAKAO, NAVER)이 어디인지 가져온다.
-        String provider = oAuth2User.getAttribute("provider");
+        String provider = oAuth2User.getAttribute("provider").toString();
         if (provider == null) {
             provider = "GOOGLE";  // 또는 실제로 사용할 수 있는 기본 제공자 이름
+        } else {
+            provider = provider.toUpperCase();
         };
 
         // CustomOAuth2UserService에서 셋팅한 로그인한 회원 존재 여부를 가져온다.
@@ -58,12 +63,11 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
         if (isExist) {
             // 회원이 존재하면 jwt token 발행을 시작한다.
-            Token token = jwtUtil.generateToken(email, role);
-            memberService.updateTokens(email, token.getToken(), token.getRefreshToken());
+            Member member = memberService.findMemberByEmailAndProviderType(email, ProviderType.valueOf(provider));
+            member.setToken(accessToken);
+            memberService.save(member);
 
-            log.info("jwtToken = {}", token.getAccessToken());
-            System.out.println("token = " + token.getToken());
-            System.out.println("token = " + token.getRefreshToken());
+            Token token = jwtUtil.generateToken(email, role);
 
             // accessToken을 쿼리스트링에 담는 url을 만들어준다.
             String targetUrl = UriComponentsBuilder.fromUriString("http://localhost:8080/loginSuccess")
@@ -82,10 +86,13 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
                     .roleType(RoleType.ADMIN)
                     .providerType(ProviderType.GOOGLE)
                     .createdAt(LocalDateTime.now())
+                    .token(accessToken)
                     .build();
 
+            System.out.println("newMember.getToken() = " + newMember.getToken());
             // 회원 정보 저장
             memberService.save(newMember);
+
             // 회원이 존재하지 않을경우, 서비스 제공자와 email을 쿼리스트링으로 전달하는 url을 만들어준다.
             String targetUrl = UriComponentsBuilder.fromUriString("http://localhost:8080/loginSuccess")
                     .queryParam("email", (String) oAuth2User.getAttribute("email"))

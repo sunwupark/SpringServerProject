@@ -19,8 +19,9 @@ public class MemberService {
         return userRepository.findByEmail(email);
     }
 
-    public Optional<Member> findByEmailAndProviderType(String email, ProviderType providerType){
-        return userRepository.findByEmailAndProviderType(email, providerType);
+    public Member findMemberByEmailAndProviderType(String email, ProviderType providerType) {
+        return userRepository.findByEmailAndProviderType(email, providerType)
+                .orElseThrow(() -> new RuntimeException("No member found with the given email and provider type"));
     }
 
     public Member save(Member member) {
