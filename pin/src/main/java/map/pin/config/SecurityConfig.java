@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @RequiredArgsConstructor
@@ -31,8 +32,9 @@ public class SecurityConfig {
                     .and()
                 .oauth2Login()
                 .loginPage("/token/expired")
-                .successHandler(successHandler)
-                .userInfoEndpoint().userService(oAuth2UserService);
+                .userInfoEndpoint().userService(oAuth2UserService)
+                .and()
+                .successHandler(successHandler);
 
         return http.build();
     }

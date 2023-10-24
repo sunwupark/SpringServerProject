@@ -22,10 +22,10 @@ class OAuth2Attribute {
 
     static OAuth2Attribute of(String provider, String attributeKey,
                               Map<String, Object> attributes) {
-        switch (provider) {
-            case "google":
+        switch (provider.toUpperCase()) {
+            case "GOOGLE":
                 return ofGoogle(provider.toUpperCase(), attributeKey, attributes);
-            case "naver":
+            case "NAVER":
                 return ofNaver("id", attributes, provider.toUpperCase());
             default:
                 throw new RuntimeException();
@@ -40,6 +40,21 @@ class OAuth2Attribute {
                 .picture((String)attributes.get("picture"))
                 .providerType(ProviderType.valueOf(provider))
                 .attributes(attributes)
+                .attributeKey(attributeKey)
+                .build();
+    }
+
+    private static OAuth2Attribute ofNaver(String attributeKey,
+                                           Map<String, Object> attributes,
+                                           String provider) {
+        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+
+        return OAuth2Attribute.builder()
+                .name((String) response.get("name"))
+                .email((String) response.get("email"))
+                .picture((String) response.get("profile_image"))
+                .providerType(ProviderType.valueOf(provider))
+                .attributes(response)
                 .attributeKey(attributeKey)
                 .build();
     }
@@ -60,20 +75,7 @@ class OAuth2Attribute {
                 .build();
     }
 
-    private static OAuth2Attribute ofNaver(String attributeKey,
-                                           Map<String, Object> attributes,
-                                           String provider) {
-        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
 
-        return OAuth2Attribute.builder()
-                .name((String) response.get("name"))
-                .email((String) response.get("email"))
-                .picture((String) response.get("profile_image"))
-                .providerType(ProviderType.valueOf(provider))
-                .attributes(response)
-                .attributeKey(attributeKey)
-                .build();
-    }
 
     Map<String, Object> convertToMap() {
         Map<String, Object> map = new HashMap<>();
